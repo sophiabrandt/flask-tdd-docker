@@ -83,8 +83,14 @@ To get a local copy up and running follow these steps.
 ```sh
 npx degit https://github.com/sophiabrandt/flask-tdd-docker.git flask-tdd-docker
 ```
-2. Run docker
-
+2. Build docker containers
+```sh
+docker-compose build
+```
+3. Run docker containers
+```sh
+docker-compose up -d
+```
 
 
 <!-- USAGE EXAMPLES -->
