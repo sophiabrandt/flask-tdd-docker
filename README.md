@@ -148,9 +148,9 @@ Project Link: [https://github.com/sophiabrandt/flask-tdd-docker](https://github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/sophiabrandt/flask-tdd-docker.svg?style=flat-square
+[contributors-url]: https://github.com/sophiabrandt/flask-tdd-docker/graphs/contributors
+[issues-shield]: https://img.shields.io/github/issues/sophiabrandt/flask-tdd-docker.svg?style=flat-square
+[issues-url]: https://github.com/sophiabrandt/flask-tdd-docker/issues
+[license-shield]: https://img.shields.io/github/license/sophiabrandt/flask-tdd-docker.svg?style=flat-square
 [testdriven]: https://testdriven.io/
