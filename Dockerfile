@@ -13,7 +13,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # add and install requirements
 RUN pip install --upgrade pip && pip install pip-tools
 COPY ./requirements.in .
-RUN pip-compile requirements.in > requirements.txt
+RUN pip-compile requirements.in > requirements.txt && pip-sync
 RUN pip install -r requirements.txt
 
 # build-image
