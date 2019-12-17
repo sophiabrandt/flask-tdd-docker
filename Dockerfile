@@ -1,4 +1,4 @@
-# base image
+# builder base image
 FROM python:3.7.5-slim-buster AS compile-image
 
 # install dependencies
@@ -12,8 +12,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # add and install requirements
 RUN pip install --upgrade pip && pip install pip-tools
-COPY ./requirements.in .
-RUN pip-compile requirements.in > requirements.txt && pip-sync
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 # build-image
@@ -29,16 +28,9 @@ COPY --from=compile-image /opt/venv /opt/venv
 # set working directory
 WORKDIR /usr/src/app
 
-# add user
-RUN addgroup --system user && adduser --system --no-create-home --group user
-RUN chown -R user:user /usr/src/app && chmod -R 755 /usr/src/app
-
 # add entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
-
-# switch to non-root user
-USER user
 
 # add app
 COPY . /usr/src/app
