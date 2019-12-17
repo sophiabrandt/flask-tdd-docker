@@ -100,6 +100,10 @@ To get a local copy up and running follow these steps.
     docker-compose exec users pytest "project/tests"
     ```
 
+- Recreate database:
+    ```sh
+    docker-compose exec users python manage.py recreate_db
+    ```
 
 <!-- ROADMAP -->
 ## Roadmap
