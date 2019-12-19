@@ -18,6 +18,10 @@ RUN pip install -r requirements.txt
 # build-image
 FROM python:3.7.5-slim-buster AS runtime-image
 
+# install nc
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends netcat-openbsd
+
 # copy Python dependencies from build image
 COPY --from=compile-image /opt/venv /opt/venv
 
