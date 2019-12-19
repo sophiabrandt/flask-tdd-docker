@@ -1,5 +1,3 @@
-import sys
-
 from flask.cli import FlaskGroup
 
 from project import create_app, db
@@ -12,9 +10,9 @@ cli = FlaskGroup(create_app=create_app)
 @cli.command("recreate_db")
 def recreate_db():
     """Recreates the database."""
+    db.session.remove()
     db.drop_all()
     db.create_all()
-    db.session.commit()
 
 
 @cli.command("seed_db")
