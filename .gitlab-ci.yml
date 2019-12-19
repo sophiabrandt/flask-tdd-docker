@@ -14,7 +14,6 @@ build:
   variables:
     DOCKER_DRIVER: overlay2
   script:
-    - cd app
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
     - docker pull $IMAGE:compile-stage || true
     - docker pull $IMAGE:latest || true
