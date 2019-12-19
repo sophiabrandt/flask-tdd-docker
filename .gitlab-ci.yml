@@ -1,0 +1,51 @@
+image: docker:stable
+
+stages:
+  - build
+  - test
+
+variables:
+  IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+
+build:
+  stage: build
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - cd app
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+    - docker pull $IMAGE:compile-stage || true
+    - docker pull $IMAGE:latest || true
+    - docker build
+        --target compile-image
+        --cache-from $IMAGE:compile-stage
+        --tag $IMAGE:compile-stage
+        --file ./Dockerfile-prod
+        "."
+    - docker build
+        --target runtime-image
+        --cache-from $IMAGE:compile-stage
+        --cache-from $IMAGE:latest
+        --tag $IMAGE:latest
+        --file ./Dockerfile-prod
+        "."
+    - docker push $IMAGE:compile-stage
+    - docker push $IMAGE:latest
+
+test:
+  stage: test
+  image: $IMAGE:latest
+  services:
+    - postgres:latest
+  variables:
+    POSTGRES_DB: users
+    POSTGRES_USER: runner
+    POSTGRES_PASSWORD: ""
+    DATABASE_URL: postgres://runner@postgres:5432/users
+  script:
+    - pytest "project/tests" -p no:warnings
+    - flake8 project
+    - black --check
+    - isort ./*/*.py --check-only

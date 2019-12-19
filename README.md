@@ -8,7 +8,7 @@
 -->
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
-
+[![pipeline status](https://gitlab.com/sophiabrandt/flask-tdd-docker/badges/master/pipeline.svg)](https://gitlab.com/sophiabrandt/flask-tdd-docker/commits/master)
 
 <!-- PROJECT LOGO -->
 <br />
