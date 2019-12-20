@@ -62,7 +62,7 @@ deploy:
     - apk add --no-cache curl
     - docker build
         --tag $HEROKU_REGISTRY_IMAGE
-        --file ./Dockerfile.prod
+        --file ./Dockerfile-prod
         "."
     - echo -n $HEROKU_AUTH_TOKEN | docker login -u _ --password-stdin registry.heroku.com
     - docker push $HEROKU_REGISTRY_IMAGE
