@@ -1,8 +1,9 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource
+
 from sqlalchemy import exc
 
-from project import db
+from project import db, cache
 from project.api.users.models import User
 
 users_blueprint = Blueprint("users", __name__)
@@ -32,6 +33,7 @@ class UsersList(Resource):
             db.session.rollback()
             return response_object, 400
 
+    @cache.cached(timeout=50, key_prefix="all_users")
     def get(self):
         response_object = {
             "status": "success",
@@ -41,6 +43,7 @@ class UsersList(Resource):
 
 
 class Users(Resource):
+    @cache.cached(timeout=50, key_prefix="get_user")
     def get(self, user_id):
         response_object = {"status": "fail", "message": "User does not exist."}
         try:
