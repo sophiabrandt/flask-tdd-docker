@@ -122,6 +122,43 @@ To get a local copy up and running follow these steps.
     docker-compose exec users black project
     docker-compose exec users /bin/sh -c "isort project/*/*.py"
     ```
+- Query all users:
+  ```sh
+  curl http://localhost:5001/users
+  ```
+  ```sh
+  https://desolate-cliffs-02122.herokuapp.com/users
+  ```
+
+- Query specific user (by id):
+  ```sh
+  curl http://localhost:5001/users/1
+  ```
+  ```sh
+  https://desolate-cliffs-02122.herokuapp.com/users/1
+  ```
+- Create new user:
+  ```sh
+  curl -d '{"username":"jane","email":"jane@test.cc"}' -H "Content-Type: application/json" -X POST http://localhost:5001/users
+  ```
+  ```sh
+  curl -d '{"username":"jane","email":"jane@test.cc"}' -H "Content-Type: application/json" -X POST https://desolate-cliffs-02122.herokuapp.com/users
+
+- Update a user:
+  ```sh
+  curl -d '{"username":"jane","email":"jane@test.cc"}' -H "Content-Type: application/json" -X PUT http://localhost:5001/users/1
+  ```
+  ```sh
+  curl -d '{"username":"jane","email":"jane@test.cc"}' -H "Content-Type: application/json" -X PUT https://desolate-cliffs-02122.herokuapp.com/users/1
+  ```
+
+- Update a user:
+  ```sh
+  curl -X DELETE http://localhost:5001/users/1
+  ```
+  ```sh
+  curl -X DELETE https://desolate-cliffs-02122.herokuapp.com/users/1
+  ```
 
 <!-- ROADMAP -->
 ## Roadmap
