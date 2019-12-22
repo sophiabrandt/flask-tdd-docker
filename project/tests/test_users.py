@@ -174,7 +174,7 @@ def test_update_user_invalid_json_keys(test_app, test_database):
 def test_update_user_does_not_exist(test_app, test_database):
     client = test_app.test_client()
     resp = client.put(
-        f"/users/999",
+        "/users/999",
         data=json.dumps({"username": "me", "email": "me@test.com"}),
         content_type="application/json",
     )

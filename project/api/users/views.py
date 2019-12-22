@@ -33,7 +33,7 @@ class UsersList(Resource):
             db.session.rollback()
             return response_object, 400
 
-    @cache.cached(timeout=50, key_prefix="all_users")
+    @cache.memoize(50)
     def get(self):
         response_object = {
             "status": "success",
@@ -43,7 +43,7 @@ class UsersList(Resource):
 
 
 class Users(Resource):
-    @cache.cached(timeout=50, key_prefix="get_user")
+    @cache.memoize(50)
     def get(self, user_id):
         response_object = {"status": "fail", "message": "User does not exist."}
         try:
