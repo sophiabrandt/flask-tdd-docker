@@ -97,12 +97,30 @@ To get a local copy up and running follow these steps.
 
 - Run tests:
     ```sh
-    docker-compose exec users pytest "project/tests"
+    docker-compose exec users pytest "project/tests" -p no:warnings
     ```
+
+- Run test coverage:
+    ```sh
+    docker-compose exec users pytest "project/tests" -p no:warnings --cov="project"
+    ```
+
 
 - Recreate database:
     ```sh
     docker-compose exec users python manage.py recreate_db
+    ```
+
+- Seed database:
+    ```sh
+    docker-compose exec users python manage.py seed_db
+    ```
+
+- Run flake8, black, isort:
+    ```sh
+    docker-compose exec users flake8 project
+    docker-compose exec users black project
+    docker-compose exec users /bin/sh -c "isort project/*/*.py"
     ```
 
 <!-- ROADMAP -->
