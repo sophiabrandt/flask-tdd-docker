@@ -20,7 +20,7 @@
   <h3 align="center">Flask TDD Docker</h3>
 
   <p align="center">
-    Developing a Flask REST API with a React front-end - with TDD
+    Developing a Flask REST API with Docker, using TDD principles
     <br />
     <a href="https://github.com/sophiabrandt/flask-tdd-docker"><strong>Explore the docs »</strong></a>
     <br />
@@ -55,17 +55,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The repo represents my learning progress with the [testdriven.io courses][testdriven] with Flask, Docker and React.
+The repo represents my learning progress with the [testdriven.io course][testdriven] with Flask and Docker.
 
+See a **live demo on [Heroku](https://desolate-cliffs-02122.herokuapp.com/users)**.
 
 ### Built With
 
 * Flask
 * Flask-RESTful
 * Docker
-* React
-
-
+* pytest
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -80,6 +79,10 @@ To get a local copy up and running follow these steps.
 ### Installation
  
 1. Get the flask-tdd-docker repository
+    ```sh
+    git clone https://github.com/sophiabrandt/flask-tdd-docker.git
+    ```
+    or, if you have [Node.js](https://nodejs.org/en/) on your machine:
     ```sh
     npx degit https://github.com/sophiabrandt/flask-tdd-docker.git flask-tdd-docker
     ```
@@ -127,7 +130,7 @@ To get a local copy up and running follow these steps.
   curl http://localhost:5001/users
   ```
   ```sh
-  https://desolate-cliffs-02122.herokuapp.com/users
+  curl https://desolate-cliffs-02122.herokuapp.com/users
   ```
 
 - Query specific user (by id):
@@ -135,7 +138,7 @@ To get a local copy up and running follow these steps.
   curl http://localhost:5001/users/1
   ```
   ```sh
-  https://desolate-cliffs-02122.herokuapp.com/users/1
+  curl https://desolate-cliffs-02122.herokuapp.com/users/1
   ```
 - Create new user:
   ```sh
@@ -152,7 +155,7 @@ To get a local copy up and running follow these steps.
   curl -d '{"username":"jane","email":"jane@test.cc"}' -H "Content-Type: application/json" -X PUT https://desolate-cliffs-02122.herokuapp.com/users/1
   ```
 
-- Update a user:
+- Delete a user:
   ```sh
   curl -X DELETE http://localhost:5001/users/1
   ```
